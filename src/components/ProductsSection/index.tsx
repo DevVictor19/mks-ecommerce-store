@@ -9,17 +9,17 @@ const url =
 export function ProductsSection() {
   const { data, loading, error } = useFetch<{ products: Product[] }>(url);
 
-  if (error) {
+  if (error !== null) {
     console.log(error);
-    return <h1>Ops... Algo deu errado</h1>;
+    return <h1 data-testid="error-content">Ops... Algo deu errado</h1>;
   }
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <h1 data-testid="loading-content">Loading...</h1>;
   }
 
   return (
-    <Container>
+    <Container data-testid="content-container">
       {data?.products.map((product) => (
         <ProductCard
           key={product.id}
