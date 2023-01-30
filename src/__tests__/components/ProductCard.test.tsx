@@ -2,6 +2,8 @@ import { render } from "@testing-library/react";
 
 import { ProductCard } from "../../components/ProductCard";
 
+jest.mock("../../hooks/useAppDispatch.ts");
+
 describe("<ProductCard />", () => {
   it("should render an 'img' tag with the provided url via props on his src", () => {
     const testPhotoUrl = "https://test.jpg/";
