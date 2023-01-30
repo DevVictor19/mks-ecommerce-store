@@ -1,6 +1,6 @@
 import userEvent from "@testing-library/user-event";
 
-import { renderWithProviders } from "../utils/renderWithProviders";
+import { renderWithProviders } from "../../utils/renderWithProviders";
 import { CartButton } from "../../components/CartButton";
 
 describe("<CartButton />", () => {
