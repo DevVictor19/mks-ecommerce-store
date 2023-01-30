@@ -1,5 +1,7 @@
-import { Container, ImageContainer, InfoContainer } from "./styles";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { addProduct } from "../../store/slices/cartSlice";
 
+import { Container, ImageContainer, InfoContainer } from "./styles";
 import shoppingBag from "../../assets/shopping-bag.svg";
 
 export interface Product {
@@ -21,8 +23,19 @@ export function ProductCard({
   photo,
   price,
 }: ProductProps) {
+  const dispatch = useAppDispatch();
+
   const handleClick = () => {
-    console.log("product:" + id);
+    dispatch(
+      addProduct({
+        id,
+        name,
+        brand,
+        description,
+        photo,
+        price,
+      })
+    );
   };
 
   return (
