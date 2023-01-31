@@ -397,11 +397,11 @@ describe("removeProduct()", () => {
           description: "test description",
           photo: "test photo",
           price: "500",
-          quantity: 1,
+          quantity: 10,
         },
       ],
-      totalAmount: 500,
-      totalItems: 1,
+      totalAmount: 5000,
+      totalItems: 10,
     };
 
     const updatedState = cartSliceReducer(
@@ -422,11 +422,11 @@ describe("removeProduct()", () => {
           description: "test description",
           photo: "test photo",
           price: "500",
-          quantity: 1,
+          quantity: 10,
         },
       ],
-      totalAmount: 500,
-      totalItems: 1,
+      totalAmount: 5000,
+      totalItems: 10,
     };
 
     const updatedState = cartSliceReducer(
