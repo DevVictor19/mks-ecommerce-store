@@ -44,20 +44,20 @@ export function CartProduct({
         x
       </button>
       <ImageContainer>
-        <img src={photo} alt={description} />
+        <img src={photo} alt={description} data-testid="product-img" />
       </ImageContainer>
-      <h1>{name}</h1>
+      <h1 data-testid="product-name">{name}</h1>
       <ActionsContainer>
         <Switcher>
           <button type="button" onClick={handleDecrement}>
             -
           </button>
-          <div>{quantity}</div>
+          <div data-testid="product-quantity">{quantity}</div>
           <button type="button" onClick={handleIncrement}>
             +
           </button>
         </Switcher>
-        <h2>R${+price}</h2>
+        <h2 data-testid="product-price">R${+price}</h2>
       </ActionsContainer>
     </Container>
   );
