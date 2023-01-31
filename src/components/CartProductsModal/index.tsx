@@ -33,7 +33,7 @@ export function CartProductsModal({ onClose }: CartProductsModalProps) {
         ))}
       </Content>
       <Info>
-        <h1>
+        <h1 data-testid="total-amount">
           Total: <span>R${cart.totalAmount}</span>
         </h1>
         <div>
