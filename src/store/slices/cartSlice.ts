@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { Product } from "../../components/ProductCard";
 
-interface StateProduct extends Product {
+export interface StateProduct extends Product {
   quantity: number;
 }
 
@@ -102,8 +102,8 @@ export const cartSlice = createSlice({
 
       state.products = updatedProductsState;
 
-      state.totalItems -= 1;
-      state.totalAmount -= +targetProduct.price;
+      state.totalItems -= targetProduct.quantity;
+      state.totalAmount -= +targetProduct.price * targetProduct.quantity;
     },
   },
 });

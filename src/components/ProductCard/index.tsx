@@ -46,7 +46,7 @@ export function ProductCard({
       <InfoContainer>
         <div>
           <h1>{name}</h1>
-          <h2>R${+price}</h2>
+          <h2 data-testid="product-card-price">R${+price}</h2>
         </div>
         <p>{description}</p>
       </InfoContainer>

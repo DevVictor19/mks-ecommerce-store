@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { Button } from "./styles";
 import cart from "../../assets/cart.svg";
+import { CartProductsModal } from "../CartProductsModal";
 
 export function CartButton() {
   const [open, setOpen] = useState(false);
@@ -23,7 +24,7 @@ export function CartButton() {
         <img src={cart} alt="Ícone de carrinho de compras da cor preta" />
         {totalItems}
       </Button>
-      {open && <div style={{ position: "absolute" }} data-testid="modal"></div>}
+      {open && <CartProductsModal onClose={handleClose} />}
     </>
   );
 }

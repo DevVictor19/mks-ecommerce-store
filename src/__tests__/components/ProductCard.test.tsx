@@ -1,75 +1,54 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 
 import { ProductCard } from "../../components/ProductCard";
 
 jest.mock("../../hooks/useAppDispatch.ts");
 
+const testProduct = {
+  id: 1,
+  name: "test name",
+  brand: "",
+  description: "test description",
+  photo: "https://test.jpg/",
+  price: "5000.00",
+};
+
+beforeEach(() => {
+  render(
+    <ProductCard
+      id={testProduct.id}
+      name={testProduct.name}
+      brand={testProduct.brand}
+      description={testProduct.description}
+      photo={testProduct.photo}
+      price={testProduct.price}
+    />
+  );
+});
+
 describe("<ProductCard />", () => {
-  it("should render an 'img' tag with the provided url via props on his src", () => {
-    const testPhotoUrl = "https://test.jpg/";
-    const { container } = render(
-      <ProductCard
-        id={0}
-        name=""
-        brand=""
-        description=""
-        photo={testPhotoUrl}
-        price=""
-      />
-    );
-    const img = container.querySelector("img") as HTMLImageElement;
+  it("should render the product photo with the provided photo and description prop", () => {
+    const img = screen.getByAltText(testProduct.description);
 
-    expect(img.src).toBe(testPhotoUrl);
+    expect((img as HTMLImageElement).src).toBe(testProduct.photo);
+    expect((img as HTMLImageElement).alt).toBe(testProduct.description);
   });
 
-  it("should render a 'h1' tag with the provided name via props as his textContent", () => {
-    const testName = "test";
-    const { getByText } = render(
-      <ProductCard
-        id={0}
-        name={testName}
-        brand=""
-        description=""
-        photo=""
-        price=""
-      />
-    );
-    const h1 = getByText(testName) as HTMLHeadingElement;
+  it("should render the product name with the provided name prop", () => {
+    const name = screen.getByText(testProduct.name).textContent;
 
-    expect(h1.textContent).toBe(testName);
+    expect(name).toBe(testProduct.name);
   });
 
-  it("should render a 'h2' tag with the provided price via props as his textContent", () => {
-    const testPrice = "500.40";
-    const { container } = render(
-      <ProductCard
-        id={0}
-        name=""
-        brand=""
-        description=""
-        photo=""
-        price={testPrice}
-      />
-    );
-    const h2 = container.querySelector("section div h2") as HTMLHeadingElement;
+  it("should render the product price with the provided price prop", () => {
+    const price = screen.getByTestId("product-card-price").textContent;
 
-    expect(h2.textContent).toBe(`R$${+testPrice}`);
+    expect(price).toBe(`R$${+testProduct.price}`);
   });
 
-  it("should render a 'p' tag with the provided description via props as his textContent", () => {
-    const testDescription = "test description";
-    const { getByText } = render(
-      <ProductCard
-        id={0}
-        name=""
-        brand=""
-        description={testDescription}
-        photo=""
-        price=""
-      />
-    );
-    const p = getByText(testDescription);
+  it("should render the product description with the provided description prop", () => {
+    const description = screen.getByText(testProduct.description).textContent;
 
-    expect(p.textContent).toBe(testDescription);
+    expect(description).toBe(testProduct.description);
   });
 });
