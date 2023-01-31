@@ -5,7 +5,7 @@ import { ProductCard } from "../../components/ProductCard";
 jest.mock("../../hooks/useAppDispatch.ts");
 
 describe("<ProductCard />", () => {
-  it("should render an 'img' tag with the provided url via props on his src", () => {
+  it("should render the product photo with the provided photo url prop", () => {
     const testPhotoUrl = "https://test.jpg/";
     const { container } = render(
       <ProductCard
@@ -22,7 +22,7 @@ describe("<ProductCard />", () => {
     expect(img.src).toBe(testPhotoUrl);
   });
 
-  it("should render a 'h1' tag with the provided name via props as his textContent", () => {
+  it("should render the product name with the provided name prop", () => {
     const testName = "test";
     const { getByText } = render(
       <ProductCard
@@ -39,7 +39,7 @@ describe("<ProductCard />", () => {
     expect(h1.textContent).toBe(testName);
   });
 
-  it("should render a 'h2' tag with the provided price via props as his textContent", () => {
+  it("should render the product price with the provided price prop", () => {
     const testPrice = "500.40";
     const { container } = render(
       <ProductCard
@@ -56,7 +56,7 @@ describe("<ProductCard />", () => {
     expect(h2.textContent).toBe(`R$${+testPrice}`);
   });
 
-  it("should render a 'p' tag with the provided description via props as his textContent", () => {
+  it("should render the product description with the provided description prop", () => {
     const testDescription = "test description";
     const { getByText } = render(
       <ProductCard
