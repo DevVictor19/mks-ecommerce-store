@@ -102,8 +102,8 @@ export const cartSlice = createSlice({
 
       state.products = updatedProductsState;
 
-      state.totalItems -= 1;
-      state.totalAmount -= +targetProduct.price;
+      state.totalItems -= targetProduct.quantity;
+      state.totalAmount -= +targetProduct.price * targetProduct.quantity;
     },
   },
 });
