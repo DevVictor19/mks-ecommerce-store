@@ -14,7 +14,7 @@ export function CartProductsModal({ onClose }: CartProductsModalProps) {
     <Container data-testid="modal">
       <Menu>
         <h1>Carrinho de compras</h1>
-        <button type="button" onClick={onClose}>
+        <button type="button" data-testid="close-button" onClick={onClose}>
           x
         </button>
       </Menu>

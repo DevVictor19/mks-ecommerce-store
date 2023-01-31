@@ -29,4 +29,19 @@ describe("<CartButton />", () => {
 
     expect(modal).toBeInTheDocument();
   });
+
+  it("should close the modal when the close button is clicked", async () => {
+    const { getByTestId, queryByTestId, container } = renderWithProviders(
+      <CartButton />
+    );
+    const openButton = container.querySelector("button") as HTMLButtonElement;
+    await userEvent.click(openButton);
+
+    const closeButton = getByTestId("close-button") as HTMLButtonElement;
+    await userEvent.click(closeButton);
+
+    const modal = queryByTestId("modal");
+
+    expect(modal).not.toBeInTheDocument();
+  });
 });
