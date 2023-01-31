@@ -3,7 +3,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { Product } from "../../components/ProductCard";
 
-interface StateProduct extends Product {
+export interface StateProduct extends Product {
   quantity: number;
 }
 
