@@ -1,10 +1,19 @@
 import { Product, ProductCard } from "../ProductCard";
+import { Shimmer } from "../Shimmer";
 import { useFetch } from "../../hooks/useFetch";
 
 import { Container } from "./styles";
 
 const url =
   "https://mks-challenge-api-frontend.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=id&orderBy=ASC";
+
+const rows = 8;
+
+const shimmers: JSX.Element[] = [];
+
+for (let i = 0; i < rows; i++) {
+  shimmers.push(<Shimmer />);
+}
 
 export function ProductsSection() {
   const { data, loading, error } = useFetch<{ products: Product[] }>(url);
@@ -15,7 +24,7 @@ export function ProductsSection() {
   }
 
   if (loading) {
-    return <h1 data-testid="loading-content">Loading...</h1>;
+    return <Container data-testid="loading-content">{shimmers}</Container>;
   }
 
   return (
