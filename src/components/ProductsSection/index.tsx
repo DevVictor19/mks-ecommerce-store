@@ -12,7 +12,7 @@ const rows = 8;
 const shimmers: JSX.Element[] = [];
 
 for (let i = 0; i < rows; i++) {
-  shimmers.push(<Shimmer />);
+  shimmers.push(<Shimmer key={`shimmer-${i}`} />);
 }
 
 export function ProductsSection() {

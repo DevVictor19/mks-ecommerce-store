@@ -1,8 +1,12 @@
+import { Attributes } from "react";
+
 import { Container, Box, Line } from "./styles";
 
-export function Shimmer() {
+interface ShimmerProps extends Attributes {}
+
+export function Shimmer({ ...rest }: ShimmerProps) {
   return (
-    <Container>
+    <Container {...rest}>
       <Box className="shine" />
       <Line style={{ width: "70%" }} className="shine" />
       <Line style={{ width: "70%" }} className="shine" />
